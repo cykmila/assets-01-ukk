@@ -1,0 +1,24 @@
+/* //css book */
+.button-detail{
+    background-color:  rgba(160, 100, 118, 1);
+   margin-bottom: 9px;
+   margin-left: 9px;
+}
+
+.button-borrowing{
+    background-color: rgba(160, 100, 118, 1);
+    width: 450px;
+    border-radius: 20px;
+    transition: background-color 0.4s ease-in-out;
+}
+.button-borrowing:hover{
+    background-color: rgb(133, 65, 85);
+}
+
+.button-bookmark{
+    background-color: rgba(160, 100, 118, 1);
+    border-radius: 20px;
+}
+.button-bookmark:hover{
+    background-color: rgb(133, 65, 85);
+}

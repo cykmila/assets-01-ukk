@@ -1,0 +1,98 @@
+@import url(https://fonts.googleapis.com/css?family=Rubik:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
+body {
+    height: 100vh;
+    font-family: 'Rubik', sans-serif;
+    background-image: url(../img/hero.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+.bg-logo{
+    background-color: rgb(160, 100, 118);
+}
+
+.bg-form{
+    background-color: #FFFBE9;
+}
+.h4-regist{
+    margin-top: 5%;
+    margin-left: 45%;
+    margin-bottom: 3%;
+    font-family: 'Rubik', sans-serif;
+}
+.h4-login{
+    margin-top: 25%;
+    margin-left: 45%;
+    margin-bottom: 3%;
+    font-family: 'Rubik', sans-serif;
+}
+.form-username{
+    margin-left: 19%;
+}
+ .form-control{
+    border-radius: 20px !important;
+    width: 450px !important;
+    border-color: rgb(160, 100, 118) !important;
+}
+
+.button-register{
+    background-color: rgba(160, 100, 118, 1);
+    width: 450px;
+    border-radius: 20px;
+    transition: background-color 0.4s ease-in-out;
+}
+.button-register:hover{
+   background-color:  rgb(133, 65, 85);
+}
+.button-login{
+    background-color: rgba(160, 100, 118, 1);
+    width: 450px;
+    border-radius: 20px;
+    transition: background-color 0.4s ease-in-out;
+}
+.button-login:hover{
+    background-color:  rgb(133, 65, 85);
+ }
+
+/* //css landing page */
+
+
+.welcome{
+    color: white;
+}
+
+.desc{
+    color: white;
+}
+
+.about{
+    margin-top: 9%;
+    color: white;
+}
+.p-about{
+    color: white;
+}
+.footer{
+    background-color: #FFFBE9;
+    padding: 10px 0;
+}
+
+.img-footer{
+    height: 80px;
+}
+
+.card{
+    width: 70%;
+    height:50%;
+    border-radius: 0px;
+}
+.button-regist{
+    background-color: rgb(133, 65, 85);
+}
+.button-regist:hover{
+    background-color: rgb(133, 65, 85);
+}
+
