@@ -1,24 +1,69 @@
+section{
+    min-height: 100vh;
+}
+/* .body-admin{
+    background-color: #a509422e;
+} */
+
+/* .background-content{
+    background-color: #a509422e;
+} */
+/* .tag{
+    color: rgba(157, 18, 77, 1);
+} */
+.logo{
+   margin-top: 15%;
+}
+/* .sidebar-item:hover{
+    background-color: rgba(157, 18, 77, 1);                
+} */
 /* //css book */
-.button-detail{
+.button-detail-books{
     background-color:  rgba(160, 100, 118, 1);
    margin-bottom: 9px;
    margin-left: 9px;
+   transition: background-color 0.4s ease-in-out;
+   border-radius: 9px;
+}
+.button-detail-books:hover{
+    background-color:rgb(133, 65, 85);
 }
 
 .button-borrowing{
     background-color: rgba(160, 100, 118, 1);
     width: 450px;
-    border-radius: 20px;
+    border-radius: 9px;
     transition: background-color 0.4s ease-in-out;
 }
 .button-borrowing:hover{
     background-color: rgb(133, 65, 85);
 }
-
 .button-bookmark{
     background-color: rgba(160, 100, 118, 1);
-    border-radius: 20px;
+    border-radius: 9px;
+    transition: background-color 0.4s ease-in-out;
 }
 .button-bookmark:hover{
     background-color: rgb(133, 65, 85);
+}
+.b-create{
+    background-color: rgba(160, 100, 118, 1);
+    border-radius: 9px;
+    transition: background-color 0.4s ease-in-out;
+}
+.b-create:hover{
+    background-color: rgb(133, 65, 85);
+}
+
+/* //css bookmark */
+.b-add-bookmark{
+    background-color: rgba(160, 100, 118, 1);
+    transition: background-color 0.4s ease-in-out;
+    border-radius: 9px;
+}
+.b-add-bookmark:hover{
+    background-color: rgb(133, 65, 85);
+}
+.card-bookmarks{
+    border-radius: 9px;
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vertical Navbar - Mazer Admin Dashboard</title>
+    <title>Dashboard-LibyLine</title>
 
 
 
@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="{{ asset('assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
     <link rel="stylesheet" crossorigin href="{{ asset('./assets/compiled/css/table-datatable-jquery.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">    
+    <link rel="stylesheet" crossorigin href="{{ asset ('./assets/compiled/css/iconly.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/extensions/summernote/summernote-lite.css') }}">
+
 
 
 </head>

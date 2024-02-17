@@ -12,6 +12,8 @@ body {
 
 .bg-logo{
     background-color: rgb(160, 100, 118);
+    position:sticky;
+    height: 108vh;
 }
 
 .bg-form{
@@ -90,7 +92,8 @@ body {
     border-radius: 0px;
 }
 .button-regist{
-    background-color: rgb(133, 65, 85);
+    background-color: rgba(160, 100, 118, 1);
+    border-radius: 9px;
 }
 .button-regist:hover{
     background-color: rgb(133, 65, 85);

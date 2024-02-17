@@ -18,7 +18,7 @@
     <div class="row h-100">
 
         {{-- //sisi-kiri --}}
-        <div class="col-6 d-flex justify-content-center align-item-center  bg-logo h-100">
+        <div class="col-6 d-flex justify-content-center align-item-center  bg-logo">
             <img src="{{ asset('img/logo-libyline.png') }}" alt="" class="w-25 h-25 my-auto">
         </div>
 
@@ -91,6 +91,10 @@
                 <button type="submit" class="button-register btn light text-white"
                     style="margin-left: 19%">Submit</button>
             </form>
+            <div class="text-center mt-5 text-lg fs-4">
+                <p class='text-gray-600' style="font-size: 65%">Already have an account? <a href="/login" class="font-bold">Log
+                        in</a>.</p>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
