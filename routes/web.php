@@ -23,6 +23,7 @@ Route::get('/', function () {
     return view('landing');
 });
 
+
 //route category
 Route::get('/category', function () {
     return view('users.categories.category', [
@@ -162,7 +163,6 @@ Route::get('/category/delete/admin', function(){
 
 
 //Route login
-
 
 //route dashboard
 

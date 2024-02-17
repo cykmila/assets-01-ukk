@@ -16,20 +16,14 @@
                             <thead>
                                 <tr>
                                     <th>Category</th>
-                                    <th>Title</th>
-                                    <th>Stock</th>
-                                    <th>Action</th>
+            
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>Romance</td>
-                                    <td>Melodylan</td>
-                                    <td>10</td>
-                                    <td>
-                                        <a href="/book/detail" class="btn icon btn"
-                                            style="background-color: rgb(160, 100, 118)"><i class="bi bi-eye-fill"></i></a>
-                                    </td>
+                                    
+                                   
                                 </tr>
                             </tbody>
                         </table>
