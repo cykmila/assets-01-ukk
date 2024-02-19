@@ -26,8 +26,11 @@
                                     <td>
                                         <a href="/borrowing/detail/admin" class="btn icon btn"
                                             style="background-color: rgb(160, 100, 118)"><i class="bi bi-eye-fill"></i></a>
-                                        <a href="/borrowing/edit/admin" class="btn icon btn-light" style="background-color: rgb(255, 255, 227)"><i class="bi bi-pencil-square"></i></a>
-                                        <a href="#" class="btn icon btn-light"><i class="bi bi-trash-fill"></i></a>
+                                            @can('admin')
+                                                
+                                            <a href="/borrowing/edit/admin" class="btn icon btn-light" style="background-color: rgb(255, 255, 227)"><i class="bi bi-pencil-square"></i></a>
+                                            <a href="#" class="btn icon btn-light"><i class="bi bi-trash-fill"></i></a>
+                                            @endcan
                                     </td>
                                 </tr>
                             </tbody>

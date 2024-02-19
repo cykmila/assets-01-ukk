@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
+    public function book(){
+        return view('admin.books.adminBook',[
+            'title' => 'Dashboard LibyLine',
+            'active' => 'book',
+        ]);
+    }
     /**
      * Display a listing of the resource.
      */

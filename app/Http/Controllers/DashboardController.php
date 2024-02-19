@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function dashboard(){
-        return view('page.dashboard');
+        return view('page.dashboard',[
+            'title'=> 'Dashboard LibyLine',
+            'active' => 'dashboard'
+        ]);
     }
 }

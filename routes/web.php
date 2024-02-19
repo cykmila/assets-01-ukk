@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoryController;
 use PhpParser\Node\Stmt\Return_;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardAdminController;
 
 /*
@@ -22,18 +25,13 @@ use App\Http\Controllers\DashboardAdminController;
 Route::get('/', function () {
     return view('landing');
 });
-Route::get('/login', function () {
-    return view('login');
-});
+// Route::get('/login', function () {
+//     return view('login');
+// });
 
 
 //route category
-// Route::get('/category', function () {
-//     return view('users.categories.category', [
-//         'title' => 'Dashbord-LibyLine',
-//         'active' => 'category'
-//     ]);
-// });
+Route::get('category',[CategoryController::class,'category']);
 
 //route bookmarks
 // Route::get('/bookmark', function () {
@@ -44,12 +42,7 @@ Route::get('/login', function () {
 // });
 
 //route books
-// Route::get('/book', function () {
-//     return view('users.books.book', [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'book'
-//     ]);
-// });
+Route::get('book',[BookController::class,'book']);
 // Route::get('/book/detail', function () {
 //     return view('users.books.book-detail', [
 //         'title' => 'Dashboard-LibyLine',
@@ -164,10 +157,10 @@ Route::get('/login', function () {
 
 // Route register
 Route::get('register',[RegisterController::class,'register']);
-Route::get('register',[RegisterController::class,'registerAction']);
+Route::post('registerAction',[RegisterController::class,'registerAction']);
  
 //Route login
 Route::get('login',[LoginController::class,'login']);
-Route::get('login',[LoginController::class,'Action']);
+Route::post('login',[LoginController::class,'loginAction']);
 //route dashboard
-
+Route::get('dashboard',[DashboardController::class, 'dashboard']);

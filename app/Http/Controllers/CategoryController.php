@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function category(){
+        return view('admin.categories.adminCategory', [
+            'title' => 'Dashboard LibyLine',
+            'active' => 'category',
+        ]);
+    }
     /**
      * Display a listing of the resource.
      */

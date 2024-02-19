@@ -1,44 +1,62 @@
 <?php
 
 namespace App\Http\Controllers;
-namespace App\Http\Controllers\Session;
+
+// namespace App\Http\Controllers\Session;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
+// use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 
 class RegisterController extends Controller
 {
 
-    public function register(){
-        return view('register');
+    public function register()
+    {
+        return view('register', [
+            'title' => 'register',
+        ]);
     }
-    public function registerAction(Request $request){
-                $data = [
-                'username' => $request->input('username'),
-                'password' => $request->input('password'),
-                'email' => $request->input('email'),
-                'name' => $request->input('name'),
-                'phone' => $request->input('phone'),
-                'address' =>$request->input('address'),
-                 ];
-                 if(Auth::attempt($data)){
-                    return redirect('/login');
-                } else{
-                    Session::flash('error', 'gagal register!');
-                    return redirect('/register');
-                }
-                
-             }   
-    
+    public function registerAction(Request $request)
+    { 
+        // dd($request);
+        $validateData = $request->validate([
+            'username' => 'required|max:50',
+            'password' => 'required|min:8',
+            'email' => 'required|max:50',
+            'name' => 'required|max:50',
+            'phone' => 'required|max:13',
+            'address' => 'required',
+        ]);
+        if ($validateData) {
+            $validateData['password'] = Hash::make($validateData['password']);
+
+            // User::create([
+
+            // 'username' => $request->username,
+            // 'password' => $request-> password,
+            // 'email' => $request-> email,
+            // 'name' => $request-> name,
+            // 'phone' => $request-> phone,
+            // 'address' => $request-> address,
+            // ]);
+            User::create($validateData);
+            return redirect('/login');
+        }
+        return redirect('/register');
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       
+        //
     }
 
     /**

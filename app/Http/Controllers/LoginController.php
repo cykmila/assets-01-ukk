@@ -1,29 +1,34 @@
 <?php
 
 namespace App\Http\Controllers;
-namespace App\Http\Controllers\Session;
+// namespace App\Http\Controllers\Session;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
+// use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
-    public function login(){
-        return view('login');
+    public function login()
+    {
+        return view('login', [
+            'title' => 'login',
+        ]);
     }
 
-    public function loginAction(Request $request){
-        $data = [
-            'email' => $request->input('email'),
-            'password' =>$request->input('password'),
-        ];
-        if(Auth::attempt($data)){
-            return redirect('/dashboard');
-        } else{
-            Session::flash('error', 'gagal login');
-            return redirect('/login');
+    public function loginAction(Request $request)
+    {
+        $scredentials = $request->validate([
+            'username' => 'required|max:50',
+            'password' => 'required|min:8',
+
+        ]);
+        if (Auth::attempt($scredentials)) {
+            request()->session()->regenerate();
+            return redirect('/dashboard')->with('success', 'you have been logged in!');
+        } else {
+            return redirect('/login')->with('error');
         }
     }
     /**

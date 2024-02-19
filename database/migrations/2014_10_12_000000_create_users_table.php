@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('name',50);
             $table->integer('phone');
             $table->text('address');
+            $table->enum('role',['user', 'petugas', 'admin'])->default('user');
             
         });
     }
