@@ -11,7 +11,10 @@ class BookmarkController extends Controller
      */
     public function index()
     {
-        //
+        return view('users.bookmarks.bookmark',[
+            'title' => 'Dashboard LibyLine',
+            'active' => 'bookmark'
+        ]);
     }
 
     /**

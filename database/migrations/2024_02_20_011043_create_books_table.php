@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_books', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->id('book_id');
             $table->string('title');
             $table->integer('stock');
-            $table->string('category');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('category_id')->on('categories');
             $table->date('publication');
             $table->string('publisher');
             $table->text('synopsis');
             $table->enum('rating',[1,2,3,4,5]);
-            $table->enum('status',['borrowed','return']);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('borrowings', function (Blueprint $table) {
             $table->id('borrowing_id');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users');
             $table->integer('book_id');
             $table->date('borrowing_date');
             $table->date('return_date');
             $table->integer('book_count');
+            $table->enum('status',['borrowed','return']);
             $table->timestamps();
             $table->softDeletes();
         });

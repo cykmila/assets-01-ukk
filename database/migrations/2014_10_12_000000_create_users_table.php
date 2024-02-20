@@ -19,9 +19,11 @@ return new class extends Migration
             $table->string('password',255);
             $table->string('email',50)->unique();
             $table->string('name',50);
-            $table->integer('phone');
+            $table->string('phone');
             $table->text('address');
             $table->enum('role',['user', 'petugas', 'admin'])->default('user');
+            $table->timestamps();
+            $table->softDeletes();
             
         });
     }

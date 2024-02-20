@@ -3,10 +3,8 @@
     <div class="page-heading">
         <section class="section">
             <div class="d-flex justify-content-end mb-4">
-                @can('user')
                 <a href="/book" class="btn icon icon-left btn" style="background-color: rgb(160, 100, 118)"><i
                         class="bi bi-bag-fill"></i> Add</a>    
-                @endcan
             </div>
             <div class="card card-bookmarks">
                 <div class="card-header">

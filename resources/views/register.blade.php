@@ -27,7 +27,7 @@
             {{-- //title --}}
             <h4 class="h4-regist">Register</h4>
             {{-- //form regist --}}
-            <form method="POST" action="registerAction">
+            <form method="POST" action="register">
                 @csrf
                 <div class="mb-3 form-username">
                     <label for="username" class="form-label" style="font-family: rubik">Username</label>

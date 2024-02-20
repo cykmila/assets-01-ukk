@@ -3,10 +3,10 @@
 <section>
     <div class="row">
         <div class="d-flex justify-content-end mb-2">
-            @can('admin')  
+            {{-- @can('admin')   --}}
             <a href="/book/create/admin" class="btn icon icon-left btn" style="background-color: rgb(160, 100, 118)"><i
                     class="bi bi-book-fill"></i> Add</a>
-            @endcan
+            {{-- @endcan --}}
         </div>
         <div class="col-xl-4 col-md-6 col-sm-12">
             <div class="card">
@@ -34,7 +34,7 @@
                             <a href="/book/detail/admin" class="btn icon btn"><i class="bi bi-eye"></i></a>
                         </div>
                     </div>
-                    @can('admin') 
+                    {{-- @can('admin')  --}}
                     <div class="d-flex justify-content-end mr-3">
                         <div class="d-inline-block mb-2 me-1">
                             <div data-bs-toggle="tooltip" data-bs-placement="top" title="edit book">
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    @endcan
+                    {{-- @endcan --}}
                 </div>
             </div>
         </section>

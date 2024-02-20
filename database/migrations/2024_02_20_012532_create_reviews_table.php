@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bookmarks', function (Blueprint $table) {
-            $table->id('bookmark_id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('user_id')->on('users');
-            $table->integer('book_id');
-            $table->softDeletes();
+        Schema::create('reviews', function (Blueprint $table) {
+            $table->id();
+            $table->text('review');
+            $table->enum('rating',[1,2,3,4,5]);
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bookmarks');
+        Schema::dropIfExists('reviews');
     }
 };

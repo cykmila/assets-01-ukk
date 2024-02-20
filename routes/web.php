@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\BorrowingController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ReviewController;
 use PhpParser\Node\Stmt\Return_;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
@@ -31,40 +34,20 @@ Route::get('/', function () {
 
 
 //route category
-Route::get('category',[CategoryController::class,'category']);
+Route::get('category',[CategoryController::class,'index']);
 
 //route bookmarks
-// Route::get('/bookmark', function () {
-//     return view('users.bookmarks.bookmark', [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'bookmark',
-//     ]);
-// });
+Route::get('bookmark',[BookmarkController::class, 'index']);
 
 //route books
-Route::get('book',[BookController::class,'book']);
-// Route::get('/book/detail', function () {
-//     return view('users.books.book-detail', [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'book'
-//     ]);
-// });
-
+Route::get('book',[BookController::class,'index'])->name('book.index');
+Route::get('/book-create',[BookController::class,'create'])->name('book.create');
 //route review
-// Route::get('/review', function () {
-//     return view('users.reviews.review', [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'review'
-//     ]);
-// });
+Route::get('review', [ReviewController::class,'index']);
+// Route::get('review', [ReviewController::class,'index']);
 
 //route borrowing
-// Route::get('/borrowing', function(){
-//     return view('users.borrowings.borrowing',  [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'borrowing'
-//     ]);
-// });
+Route::get('borrowing',[BorrowingController::class,'index']);
 // Route::get('/borrowing/create', function(){
 //     return view('users.borrowings.borrowing-create', [
 //         'title' => 'Dashboard-LibyLine',
@@ -156,11 +139,11 @@ Route::get('book',[BookController::class,'book']);
 // });
 
 // Route register
-Route::get('register',[RegisterController::class,'register']);
-Route::post('registerAction',[RegisterController::class,'registerAction']);
+Route::get('register',[RegisterController::class,'index']);
+Route::post('register',[RegisterController::class,'store']);
  
 //Route login
-Route::get('login',[LoginController::class,'login']);
-Route::post('login',[LoginController::class,'loginAction']);
+Route::get('login',[LoginController::class,'index']);
+Route::post('login',[LoginController::class,'authenticate']);
 //route dashboard
 Route::get('dashboard',[DashboardController::class, 'dashboard']);

@@ -10,33 +10,36 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function login()
-    {
-        return view('login', [
-            'title' => 'login',
-        ]);
-    }
+    // public function login()
+    // {
+    //     return view('login', [
+    //         'title' => 'login',
+    //     ]);
+    // }
 
-    public function loginAction(Request $request)
-    {
-        $scredentials = $request->validate([
-            'username' => 'required|max:50',
-            'password' => 'required|min:8',
+    // public function loginAction(Request $request)
+    // {
+    //     $scredentials = $request->validate([
+    //         'username' => 'required|max:50',
+    //         'password' => 'required|min:8',
 
-        ]);
-        if (Auth::attempt($scredentials)) {
-            request()->session()->regenerate();
-            return redirect('/dashboard')->with('success', 'you have been logged in!');
-        } else {
-            return redirect('/login')->with('error');
-        }
-    }
+    //     ]);
+    //     if (Auth::attempt($scredentials)) {
+    //         request()->session()->regenerate();
+    //         return redirect('/dashboard')->with('success', 'you have been logged in!');
+    //     } else {
+    //         return redirect('/login')->with('error');
+    //     }
+    // }
+    // 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('login',[
+            'title' => 'login'
+        ]);
     }
 
     /**
@@ -50,9 +53,23 @@ class LoginController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function authenticate(Request $request)
     {
-        //
+        $scredentials = $request->validate([
+            'username' => 'required|max:50',
+            'password' => 'required|min:8',
+            
+        ]);
+
+        if(Auth::attempt($scredentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('dashboard');
+
+            return back()->withErrors([
+                'email'=> 'email tidak cocok'
+            ])->onlyInput('email');
+        }
     }
 
     /**
