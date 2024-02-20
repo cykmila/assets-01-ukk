@@ -34,32 +34,35 @@ Route::get('/', function () {
 
 
 //route category
-Route::get('category',[CategoryController::class,'index']);
+Route::get('category',[CategoryController::class,'index'])->name('category');
+Route::get('/category-detail', function (){
+    return view('users.categories.category');
+});
 
 //route bookmarks
 Route::get('bookmark',[BookmarkController::class, 'index']);
 
 //route books
-Route::get('book',[BookController::class,'index'])->name('book.index');
-Route::get('/book-create',[BookController::class,'create'])->name('book.create');
+Route::get('book',[BookController::class,'index'])->name('book');
+Route::get('book-create',[BookController::class,'create'])->name('adminBook-create');
+Route::get('/book-detail', function(){
+    return view('users.books.book-detail',[
+        'title' => 'Dashboard LibyLine',
+        'active' => 'book'
+    ]);
+});
 //route review
 Route::get('review', [ReviewController::class,'index']);
 // Route::get('review', [ReviewController::class,'index']);
 
 //route borrowing
-Route::get('borrowing',[BorrowingController::class,'index']);
-// Route::get('/borrowing/create', function(){
-//     return view('users.borrowings.borrowing-create', [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'borrowing'
-//     ]);
-// });
-// Route::get('/borrowing/detail', function(){
-//     return view('users.borrowings.borrowing-detail', [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'book'
-//     ]);
-// });
+Route::get('/borrowing',[BorrowingController::class,'index'])->name('index');
+Route::get('/borrowing-create',[BorrowingController::class,'create'])->name('borrowing-create');
+Route::post('/borrowing-post',[BorrowingController::class,'store'])->name('borrowing-store');
+Route::get('/borrowing/{borrowing}',[BorrowingController::class,'show'])->name('borrowing-show');
+// Route::get('/borrowing/{borrowing}/borrowing-edit',[BorrowingController::class,'edit'])->name('borrowing-edit');
+// Route::put('/borrowing/{borrowing}',[BorrowingController::class,'update'])->name('borrowing-update');
+// Route::delete('/borrowing/{borrowing}',[BorrowingController::class,'destroy'])->name('borrowing-delete');
 
 //route logout
 // // Route::get('/logout',function(){
@@ -144,6 +147,6 @@ Route::post('register',[RegisterController::class,'store']);
  
 //Route login
 Route::get('login',[LoginController::class,'index']);
-Route::post('login',[LoginController::class,'authenticate']);
+Route::post('/login',[LoginController::class,'authenticate']);
 //route dashboard
 Route::get('dashboard',[DashboardController::class, 'dashboard']);

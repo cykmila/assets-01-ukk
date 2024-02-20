@@ -29,7 +29,7 @@
                     <div class="d-inline-block mb-2 me-1">
                         <div data-bs-toggle="tooltip" data-bs-placement="top"
                             title="Detail Book">
-                            <a href="/book/detail">
+                            <a href="/book-detail">
                                 <button class=" button-detail-books btn btn text-white">Detail
                                     <i class="bi bi-eye-fill"></i>
                                 </button>

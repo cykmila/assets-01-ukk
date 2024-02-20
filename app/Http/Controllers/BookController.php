@@ -14,8 +14,11 @@ class BookController extends Controller
     {
         $books = Book::latest()->paginate(10);
 
-        return view('book.index', compact('book'));
-        ;
+        return view('users.books.book',
+        ['title' => 'Dashboard LibyLine',
+        'active' => 'book',]);
+        compact('books');
+        
     }
 
     /**
@@ -23,7 +26,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('book.create');
+        return view('admin.books.adminBook-create');
     }
 
     /**
@@ -42,7 +45,7 @@ class BookController extends Controller
         ]);
         Book::create($request->all());
 
-        return redirect()->route('book.index')->with('success','berhasil memasukan buku');
+        return redirect()->route('book')->with('success','berhasil memasukan buku');
     }
 
     /**
@@ -50,7 +53,7 @@ class BookController extends Controller
      */
     public function show(Book $books)
     {
-        return view('book.show', compact('book'));
+        return view('users.books.book-detail', compact('books'));
     }
 
     /**
@@ -58,7 +61,7 @@ class BookController extends Controller
      */
     public function edit(Book $books)
     {
-        return view('book.edit', compact('book'));
+        return view('admin.books.adminBook-edit', compact('books'));
     }
 
     /**
@@ -79,7 +82,7 @@ class BookController extends Controller
 
         $books->update($request->all());
 
-        return redirect()->route('book.index')->with('success','berhasil update buku');
+        return redirect()->route('book')->with('success','berhasil update buku');
     }
 
     /**
@@ -89,6 +92,6 @@ class BookController extends Controller
     {
         $books->delete();
 
-        return redirect()->route('book.index')->with('success','berhasil menghapus buku');
+        return redirect()->route('book')->with('success','berhasil menghapus buku');
     }
 }

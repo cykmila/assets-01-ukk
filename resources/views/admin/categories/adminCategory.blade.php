@@ -33,7 +33,7 @@
                                     <td>Romance</td>
                                 
                                     <td>
-                                        <a href="/book/detail/admin" class="btn icon btn"
+                                        <a href="/book-detail" class="btn icon btn"
                                             style="background-color: rgb(160, 100, 118)"><i class="bi bi-eye-fill"></i></a>
                                             @can('admin')
                                             <a href="/category/edit/admin" class="btn icon btn"

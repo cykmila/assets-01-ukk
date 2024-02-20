@@ -54,12 +54,15 @@
                     </a>
                 </li>
 
+                <form action="{{ url('logout') }}">
+                    @csrf
                 <li class="sidebar-item {{ $active == 'logout' ? 'active' : ''}} ">
                     <a href="/logout" class='sidebar-link'>
                         <i class="bi bi-box-arrow-left" style="color: rgb(140, 21, 60)"></i>
                         <span style="color: rgb(140, 21, 60)">Logout</span>
                     </a>
                 </li>
+            </form>
             </ul>
         </div>
     </div>

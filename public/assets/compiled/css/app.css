@@ -18073,6 +18073,7 @@ body .bi:before,
 .card .card-header .h4 {
     font-size: 1.2rem;
     font-weight: 700;
+    color: #450000;
 }
 .card .card-header ~ .card-body {
     padding-top: 0;

@@ -5,11 +5,12 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
+                    <form action="{{ route('borrowing-create') }}" method="POST">
+                        @csrf
                     <div class="form-group">
                         <label for="user_id">User ID</label>
                         <input type="text" class="form-control" id="user_id" name="user_id">
                     </div>
-
                     <div class="form-group">
                         <label for="book_id">Book ID</label>
                         <input type="text" class="form-control" id="book_id" name="book_id">
@@ -29,6 +30,7 @@
                     <div class="d-flex justify-content-end">
                     <button type="submit" class="btn text-white b-create">Submit
                     </button>
+                </form>
                 </div> 
                 </div>
             </div>

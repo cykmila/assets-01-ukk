@@ -10,7 +10,7 @@
     <div class="page-heading">
         <section class="section">
             <div class="d-flex justify-content-end mb-4">
-                <a href="{{ route('borrowing-create', $borrowing) }}" class="btn icon icon-left btn" style="background-color: rgb(160, 100, 118)"><i
+                <a href="{{ route('borrowing-create', $borrowings) }}" class="btn icon icon-left btn" style="background-color: rgb(160, 100, 118)"><i
                         class="bi bi-bag-fill"></i> Add</a>    
             </div>
             <div class="card card-bookmarks">

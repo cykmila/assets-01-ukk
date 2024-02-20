@@ -1,4 +1,4 @@
-@charset "UTF-8";
+/* @charset "UTF-8";
 html[data-bs-theme="dark"] {
     --bs-blue: #435ebe;
     --bs-indigo: #6610f2;
@@ -3054,7 +3054,7 @@ html[data-bs-theme="dark"] .dataTable-table > thead {
     vertical-align: bottom;
 }
 html[data-bs-theme="dark"] .table-group-divider {
-    border-top: 2px solid #707070;
+    border-top: 2px solid #914f4f;
 }
 html[data-bs-theme="dark"] .caption-top {
     caption-side: top;
@@ -10355,4 +10355,4 @@ html[data-bs-theme="dark"] .was-validated :invalid ~ .invalid-tooltip,
 html[data-bs-theme="dark"] .is-invalid ~ .invalid-feedback,
 html[data-bs-theme="dark"] .is-invalid ~ .invalid-tooltip {
     display: block;
-}
+} */
