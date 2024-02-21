@@ -35,7 +35,7 @@
                                                 <use
                                                     xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
                                             </svg>
-                                            <h5 class="mb-0 ms-3 tag">Horor</h5>
+                                            <h5 class="mb-0 ms-3 tag">Fantasy</h5>
                                         </div>
                                     </div>
                                     <div class="col-5">
@@ -45,6 +45,7 @@
                                         <div id="chart-europe"></div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-7">
                                         <div class="d-flex align-items-center">
@@ -53,25 +54,7 @@
                                                 <use
                                                     xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
                                             </svg>
-                                            <h5 class="mb-0 ms-3 tag">Comedy</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-5">
-                                        <h5 class="mb-0 text-end tag">375</h5>
-                                    </div>
-                                    <div class="col-12">
-                                        <div id="chart-america tag"></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-7">
-                                        <div class="d-flex align-items-center">
-                                            <svg class="bi text-success" width="32" height="32" fill="blue"
-                                                style="width:10px">
-                                                <use
-                                                    xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
-                                            </svg>
-                                            <h5 class="mb-0 ms-3 tag">Horor-Comedy</h5>
+                                            <h5 class="mb-0 ms-3 tag">Horor</h5>
                                         </div>
                                     </div>
                                     <div class="col-5">
@@ -89,7 +72,7 @@
                                                 <use
                                                     xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
                                             </svg>
-                                            <h5 class="mb-0 ms-3 tag">Indonesia</h5>
+                                            <h5 class="mb-0 ms-3 tag">romance</h5>
                                         </div>
                                     </div>
                                     <div class="col-5">
