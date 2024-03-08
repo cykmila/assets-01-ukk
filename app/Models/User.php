@@ -28,4 +28,17 @@ class User extends Authenticatable
         'address',
     ];
 
+    public function borrowing(){
+        return $this->hasMany(Borrowing::class, 'user_id');
+    }
+
+    public function review(){
+        return $this->hasMany(Review::class,'user_id');
+    }
+
+    public function bookmarks()
+{
+    return $this->hasMany(Bookmark::class, 'user_id');
+}
+
 }

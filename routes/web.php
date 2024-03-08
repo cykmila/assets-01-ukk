@@ -13,6 +13,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Models\Borrowing;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,119 +36,42 @@ Route::get('/', function () {
 
 
 //route category
-Route::get('category',[CategoryController::class,'index'])->name('category');
-Route::get('/category-detail', function (){
-    return view('users.categories.category');
-});
+// Route::get('/category', function (){
+//     return view('users.categories.category', [
+//         'title' => 'Dashboard LibyLine',
+//         'active' => 'category'
+//     ]);
+// });
+Route::resource('/adminCategory',CategoryController::class);
+
+Route::get('/category',[CategoryController::class, 'categoryUser']);
+
 
 //route bookmarks
-Route::get('bookmark',[BookmarkController::class, 'index']);
+Route::resource('bookmark', BookmarkController::class)->middleware('user');
 
 //route books
-Route::get('book',[BookController::class,'index'])->name('book');
-Route::get('book-create',[BookController::class,'create'])->name('adminBook-create');
-Route::get('/book-detail', function(){
-    return view('users.books.book-detail',[
-        'title' => 'Dashboard LibyLine',
-        'active' => 'book'
-    ]);
-});
+ Route::resource('/adminBook',BookController::class);
+ Route::get('/book',[BookController::class,'bookUser']);
 //route review
-Route::get('review', [ReviewController::class,'index']);
-// Route::get('review', [ReviewController::class,'index']);
+Route::resource('/review',ReviewController::class);
+
 
 //route borrowing
-Route::get('/borrowing',[BorrowingController::class,'index'])->name('index');
-Route::get('/borrowing-create',[BorrowingController::class,'create'])->name('borrowing-create');
-Route::post('/borrowing-post',[BorrowingController::class,'store'])->name('borrowing-store');
-Route::get('/borrowing/{borrowing}',[BorrowingController::class,'show'])->name('borrowing-show');
-// Route::get('/borrowing/{borrowing}/borrowing-edit',[BorrowingController::class,'edit'])->name('borrowing-edit');
-// Route::put('/borrowing/{borrowing}',[BorrowingController::class,'update'])->name('borrowing-update');
-// Route::delete('/borrowing/{borrowing}',[BorrowingController::class,'destroy'])->name('borrowing-delete');
-
-//route logout
-// // Route::get('/logout',function(){
-// //     return view('');
-// // });
-
-// //route admin-book
-// Route::get('/book/admin', function(){
-//     return view('admin.books.adminBook', [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'book/admin'
-//     ]);
-// });
-// Route::get('/book/create/admin', function(){
-//     return view('admin.books.adminBook-create',  [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'book/create/admin'
-//     ]);
-// });
-// Route::get('/book/detail/admin', function(){
-//     return view('admin.books.adminBook-detail',  [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'book/detail/admin'
-//     ]);
-// });
-// Route::get('/book/edit/admin', function(){
-//     return view('admin.books.adminBook-edit',  [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'book/edit/admin'
-//     ]);
-// });
-
-//route admin-borrowing
-// Route::get('/borrowing/admin', function(){
-//     return view('admin.borrowings.adminBorrowing', [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'borrowing/admin'
-//     ]);
-// });
-// Route::get('/borrowing/detail/admin', function(){
-//     return view('admin.borrowings.adminBorrowing-detail', [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'borrowing/detail/admin'
-//     ]);
-// });
-// Route::get('/borrowing/edit/admin', function(){
-//     return view('admin.borrowings.adminBorrowing-edit', [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'borrowing/edit/admin'
-//     ]);
-// });
-
-//route admin-category
-// Route::get('/category/admin', function(){
-//     return view('admin.categories.adminCategory', [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'category/admin'
-//     ]);
-// });
-// Route::get('/category/edit/admin', function(){
-//     return view('admin.categories.adminCategory-edit', [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'category/edit/admin'
-//     ]);
-// });
-// Route::get('/category/create/admin', function(){
-//     return view('admin.categories.adminCategory-create', [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'category/create/admin'
-//     ]);
-// });
-// Route::get('/category/delete/admin', function(){
-//     return view('admin.categories.adminCategory-delete', [
-//         'title' => 'Dashboard-LibyLine',
-//         'active' => 'category/delete/admin'
-//     ]);
-// });
+Route::resource('/adminBorrowing', BorrowingController::class);
+Route::get('/borrowingUser',[BorrowingController::class,'userBorrowing']);
+Route::get('/cetak', [BorrowingController::class, 'print']);
+// Route::get('/borrowingUser', [BorrowingController::class,'storeUser']);
+// Route::get('', [BorrowingController::class,'']);
 
 // Route register
 Route::get('register',[RegisterController::class,'index']);
 Route::post('register',[RegisterController::class,'store']);
- 
+
 //Route login
 Route::get('login',[LoginController::class,'index']);
 Route::post('/login',[LoginController::class,'authenticate']);
+Route::get('/logout', [LoginController::class,'logoutAction']);
+
 //route dashboard
 Route::get('dashboard',[DashboardController::class, 'dashboard']);

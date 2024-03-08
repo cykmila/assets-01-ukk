@@ -6,10 +6,16 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+
     public function dashboard(){
         return view('page.dashboard',[
             'title'=> 'Dashboard LibyLine',
             'active' => 'dashboard'
+
         ]);
+
     }
+    //     if(auth()->user()->hasRole('admin')){
+    //         return view('',[
+    // };
 }

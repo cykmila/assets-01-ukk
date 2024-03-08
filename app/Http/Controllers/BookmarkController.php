@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bookmark;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookmarkController extends Controller
 {
@@ -11,18 +13,15 @@ class BookmarkController extends Controller
      */
     public function index()
     {
+        $this->authorize('user');
+        $user = Auth::user();
+        $bookmark = $user->bookmark;
+        $bookmark = Bookmark::with('book', 'user')->get();
         return view('users.bookmarks.bookmark',[
             'title' => 'Dashboard LibyLine',
-            'active' => 'bookmark'
+            'active' => 'bookmark',
+            'bookmarks' => $bookmark
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -30,7 +29,23 @@ class BookmarkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('user');
+        $bookmark = Bookmark::all();
+
+        $userId = Auth::id();
+        $validateData = $request->validate([
+            'user_id'=> 'required',
+            'book_id'=> 'required',
+            'bookmark' => $bookmark
+
+
+
+        ]);
+        $validateData['user_id'] = $userId;
+
+        Bookmark::create($validateData);
+
+        return redirect()->route('bookmark.index')->with('success','Berhasil menambah kebookmark!');
     }
 
     /**
@@ -62,6 +77,9 @@ class BookmarkController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->authorize('user');
+        Bookmark::where('book_id', $id)->delete();
+
+        return redirect()->route('bookmark.index')->with('success','Berhasil mengurangi ke bookmark!');
     }
 }

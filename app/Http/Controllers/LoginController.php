@@ -31,7 +31,7 @@ class LoginController extends Controller
     //         return redirect('/login')->with('error');
     //     }
     // }
-    // 
+    //
     /**
      * Display a listing of the resource.
      */
@@ -58,7 +58,7 @@ class LoginController extends Controller
         $scredentials = $request->validate([
             'username' => 'required|max:50',
             'password' => 'required|min:8',
-            
+
         ]);
 
         if(Auth::attempt($scredentials)) {
@@ -72,35 +72,13 @@ class LoginController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function logoutAction(Request $request)
     {
-        //
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        return redirect()->intended('login')->with('success', 'Berhasil logout!');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

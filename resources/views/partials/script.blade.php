@@ -24,6 +24,8 @@
         })
     }, false);
 </script>
+<script src="{{ asset('assets/extensions/flatpickr/flatpickr.min.js') }}"></script>
+<script src="{{ asset('assets/static/js/pages/date-picker.js') }}"></script>
 
 
 

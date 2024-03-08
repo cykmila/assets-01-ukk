@@ -7829,6 +7829,7 @@ fieldset:disabled .btn {
 }
 .ms-3 {
     margin-left: 1rem !important;
+    color:#5a1e2f;
 }
 .ms-4 {
     margin-left: 1.5rem !important;
@@ -8096,6 +8097,7 @@ fieldset:disabled .btn {
 }
 .text-end {
     text-align: right !important;
+    color: #5a1e2f;
 }
 .text-center {
     text-align: center !important;
@@ -18073,7 +18075,7 @@ body .bi:before,
 .card .card-header .h4 {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #450000;
+    color: #5a1e2f;
 }
 .card .card-header ~ .card-body {
     padding-top: 0;
@@ -18587,7 +18589,7 @@ body .bi:before,
 }
 #sidebar.active .sidebar-wrapper {
     left: 0;
-    background-color: rgb(252, 249, 237);
+    background-color:#DBC4CB;
 }
 .sidebar-wrapper {
     width: 300px;
@@ -18637,7 +18639,7 @@ body .bi:before,
     border-radius: 0.5rem;
     transition: all 0.5s;
     text-decoration: none;
-    color: #25396f;
+    color: #fbf7f3;
 }
 .sidebar-wrapper .menu .sidebar-link svg,
 .sidebar-wrapper .menu .sidebar-link i {
@@ -18650,7 +18652,7 @@ body .bi:before,
     margin-left: 1rem;
 }
 .sidebar-wrapper .menu .sidebar-link:hover {
-    background-color: #DBC4CB;
+    background-color: #fbf7f3;
 }
 .sidebar-wrapper .menu .sidebar-item {
     list-style: none;
@@ -18661,7 +18663,7 @@ body .bi:before,
     content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9" style="fill:none;stroke:white;stroke-width:1"></polyline></svg>');
 }
 .sidebar-wrapper .menu .sidebar-item.active > .sidebar-link {
-    background-color: #DBC4CB;
+    background-color: #fbf7f3;
 }
 .sidebar-wrapper .menu .sidebar-item.active > .sidebar-link span {
     color: #fff;
@@ -18797,7 +18799,8 @@ body .bi:before,
 .layout-navbar footer {
     padding-left: 2rem;
     padding-right: 2rem;
-    background-color: rgb(252, 249, 237);
+    background-color: #DBC4CB;
+    ;
 }
 .layout-navbar.navbar-fixed {
     display: block !important;
@@ -18808,7 +18811,7 @@ body .bi:before,
 }
 .navbar-fixed .navbar-top {
     position: sticky;
-    background-color: rgb(252, 249, 237);
+    background-color: #DBC4CB;
     z-index: 9;
     top: 0;
     width: inherit;
@@ -19453,8 +19456,10 @@ html[data-bs-theme="dark"] .comment-time {
 }
 #main #main-content {
     padding: 2rem;
-    background-color: #DBC4CB;
+    background-image: linear-gradient(to bottom, rgba(160, 21, 63, 1), white);
+
 }
+
 #main,
 #main-content {
     display: flex;
@@ -19469,7 +19474,7 @@ html[data-bs-theme="dark"] .comment-time {
 .page-heading h3,
 .page-heading .h3 {
     font-weight: 700;
-    color: #A0153F;
+    color: rgb(255, 243, 247);
 }
 .page-title-headings {
     display: flex;

@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Bookmark extends Model
 {
     use HasFactory;
+
+    protected $table = "bookmark";
+    protected $guarded = ['bookmark_id'];
+
+
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function book(){
+        return $this->belongsTo(Book::class, 'book_id');
+    }
+
+    
 }

@@ -19,9 +19,11 @@
     <link rel="stylesheet" href="{{ asset('assets/extensions/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
     <link rel="stylesheet" crossorigin href="{{ asset('./assets/compiled/css/table-datatable-jquery.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">    
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" crossorigin href="{{ asset ('./assets/compiled/css/iconly.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/extensions/summernote/summernote-lite.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/extensions/flatpickr/flatpickr.min.css') }}">
+
 
 
 

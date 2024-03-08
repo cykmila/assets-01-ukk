@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Bookmark;
+use App\Models\Category;
+use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class BookController extends Controller
 {
@@ -12,13 +16,27 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::latest()->paginate(10);
+        $books = Book::all();
+        $bookmark = Bookmark::get();
 
-        return view('users.books.book',
-        ['title' => 'Dashboard LibyLine',
-        'active' => 'book',]);
-        compact('books');
-        
+        return view('admin.books.adminBook',['
+        title' => 'Dashboard LibyLine',
+        'active' => 'book',
+        'book' => $books,
+        'bookmarks'=> $bookmark
+    ]);
+}
+
+
+    public function bookUser(){
+
+        $books = Book::all();
+        return view('users.books.book', [
+            'title' => 'Dashboard LibyLine',
+            'active'=> 'book',
+            'book' => $books
+    ]);
+
     }
 
     /**
@@ -26,7 +44,15 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('admin.books.adminBook-create');
+        $this->authorize('admin');
+        $categories = Category::get();
+
+        return view('admin.books.adminBook-create', [
+            'title'=> 'Dashboard LibyLine',
+            'active'=> 'book',
+            'category'=> $categories
+        ]);
+
     }
 
     /**
@@ -34,64 +60,117 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('admin');
         $request->validate([
-            'title'=> 'required|max:50',
-            'stock' => 'required|255',
+            'title'=> 'required',
+            'stock' => 'required',
+            'picture'=> 'required|image',
+            'author'=> 'required',
             'category_id' => 'required',
             'publication' => 'required',
             'publisher' => 'required',
             'synopsis' => 'required',
-            'rating' => 'nullable',
         ]);
-        Book::create($request->all());
 
-        return redirect()->route('book')->with('success','berhasil memasukan buku');
+
+        $picture = $request->file('picture');
+        $picture->storeAs('public/picture', $picture->hashName());
+
+        Book::create([
+            'title'=> $request->title,
+            'picture'=> $picture->hashName(),
+            'category_id'=> $request->category_id,
+            'author'=> $request->author,
+            'publisher'=> $request->publisher,
+            'publication'=> $request->publication,
+            'stock'=> $request->stock,
+            'synopsis'=> $request->synopsis,
+
+        ]);
+
+        return redirect('adminBook')->with('success','berhasil memasukan buku');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Book $books)
+    public function show(string $id)
     {
-        return view('users.books.book-detail', compact('books'));
+        $books = Book::where('book_id', $id)->first();
+
+
+        $review = Review::where('user_id',auth()->user()->user_id)->where('book_id', $id)->limit(1)->get();
+
+        return view('admin.books.adminBook-detail', compact('books', 'review'),[
+            'title'=> 'Dashboard LibyLine',
+            'active' => 'books'
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Book $books)
+    public function edit(string $id)
     {
-        return view('admin.books.adminBook-edit', compact('books'));
+        $this->authorize('admin');
+        $books = Book::findOrFail($id);
+        $category = Category::get();
+        return view('admin.books.adminBook-edit', compact('books','category'),[
+            'active' => 'books',
+            'title' => 'Dahsboard LibyLIne'
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Book $books)
+    public function update(Request $request, String $id)
     {
-        return $request->validate([
-            'title'=> 'required|max:50',
-            'stock' => 'required|255',
-            'category_id' => 'required',
-            'publication' => 'required',
-            'publisher' => 'required',
-            'synopsis' => 'required',
-            'rating' => 'nullable',
+        $this->authorize('admin');
+        $books = Book::findOrFail($id);
 
-        ]);
+        if ($request->hasFile('picture')) {
+            $picture = $request->file('picture');
+            $picture->storeAs('public/picture', $picture->hashName());
 
-        $books->update($request->all());
+            File::delete(public_path('public/picture') . '/' . $books->picture);
 
-        return redirect()->route('book')->with('success','berhasil update buku');
+            $books->update([
+                'picture' => $picture->hashName(),
+                'title' => $request->title,
+                'author' => $request->author,
+                'publisher' => $request->publisher,
+                'publication' => $request->publication,
+                'synopsis' => $request->synopsis,
+                'category_id' => $request->category_id,
+                'stock' => $request->stock,
+            ]);
+        } else {
+            $books->update([
+                'title' => $request->title,
+                'author' => $request->author,
+                'publisher' => $request->publisher,
+                'publication' => $request->publication,
+                'synopsis' => $request->synopsis,
+                'category_id' => $request->category_id,
+                'stock' => $request->stock,
+            ]);
+        }
+
+
+        return redirect('adminBook')->with('success','berhasil update buku');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Book $books)
+    public function destroy(string $id)
     {
+        $this->authorize('admin');
+        $books = Book::findOrFail($id);
+
         $books->delete();
 
-        return redirect()->route('book')->with('success','berhasil menghapus buku');
+        return redirect('adminBook')->with('success','buku berhasil dihapus');
     }
 }

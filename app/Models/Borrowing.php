@@ -11,6 +11,8 @@ use Laravel\Sanctum\HasApiTokens;
 class Borrowing extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
+    protected $primaryKey = 'borrowing_id';
+    // protected $foreignKey = 'book_id';
     protected $table = 'borrowings';
     protected $fillable = [
         'user_id',
@@ -20,5 +22,12 @@ class Borrowing extends Model
         'book_count',
         'status',
     ];
+
+    public function book(){
+        return $this->belongsTo(Book::class, 'book_id');
+    }
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 }

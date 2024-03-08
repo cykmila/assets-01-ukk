@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,16 +14,17 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id('user_id');
-            $table->string('username',50)->unique();
+            $table->string('username',50)->Unique();
             $table->string('password',255);
             $table->string('email',50)->unique();
             $table->string('name',50);
-            $table->string('phone');
+            $table->string('phone',12);
             $table->text('address');
-            $table->enum('role',['user', 'petugas', 'admin'])->default('user');
-            $table->timestamps();
+            $table->enum('role',['admin','petugas','user'])->default('user');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
             $table->softDeletes();
-            
+            $table->timestamps();
         });
     }
 

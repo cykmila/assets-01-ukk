@@ -35,7 +35,7 @@
         <div class="row h-100 ">
             {{-- sisi kanan --}}
             <div class="col-12 my-auto h-100 mt-5">
-                <h1 class="welcome">Welcom to <span style="font-size: 3.5rem">LibyLine</span>
+                <h1 class="welcome">Welcome to <span style="font-size: 3.5rem">LibyLine</span>
                 </h1>
                 <p class="desc">Let’s Find Your Favorite Book!</p>
             </div>
@@ -50,7 +50,7 @@
                     borrow them in physical or digital format. With its user-friendly interface and easy borrowing process,
                     LibyLine makes it easy to access reading materials without leaving home. Along with simplified delivery
                     and returns, users can enjoy the pleasure of reading hassle-free.</p>
-                    
+
                 </div>
             </div>
         </div>

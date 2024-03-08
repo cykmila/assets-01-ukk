@@ -1,53 +1,85 @@
 @extends('main')
 @section('content')
-    <div class="body-admin">
+    <div class="page-heading">
+        <section class="section">
+            <div class="card-header">
+                <div class="col-12 col-md-6 order-md-1 order-last">
+                    <h3 class="m-4">Books Category</h3>
+                </div>
+            </div>
 
-        <div class="page-heading">
-            <section class="section">
-                <div class="d-flex justify-content-end m-4">           
-                    <a href="/book" class="btn icon icon-left btn" style="background-color: rgb(160, 100, 118)"><i
+            <div class="d-flex justify-content-end m-4">
+                <div  data-bs-toggle="tooltip" data-bs-placement="top" title="Add">
+                    <a href="/adminBorrowing/create" class="btn icon icon-left btn" style="background-color: rgb(220, 187, 197)"><i
                             class="bi bi-bag-fill"></i> Add</a>
                 </div>
-                <div class="card card-bookmarks m-4">
-                    <div class="card-header" style="background-color: rgb(255, 255, 255)">
-                        <h5 class="card-title" style="color: rgb(140, 37, 68)">
-                            Borrowed book list
-                        </h5>
-                    </div>
-                    <div class="card-body p-3">
-                        <div class="table-responsive datatable-minimal">
-                            <table class="table" id="table2">
-                                <thead>
+                <div style="margin-left: 4px" data-bs-toggle="tooltip" data-bs-placement="top" title="regenerate">
+                    <a href="{{ url('/cetak') }}" class="btn icon icon-left btn" style="background-color: rgb(220, 187, 197)"><i
+                            class="bi bi-printer-fill"></i> Regenerate</a>
+
+                </div>
+            </div>
+
+            <div class="card m-4">
+                <div class="card-body">
+                    <div class="table-responsive datatable-minimal">
+                        <table class="table" id="table2">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Borrower</th>
+                                    <th>Book</th>
+                                    <th>Borrowing Date</th>
+                                    <th>Return Date</th>
+                                    <th>Book Count</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            @php
+                                $counter =1;
+                            @endphp
+                            <tbody>
+                                @foreach ($borrowing as $borrowings)
                                     <tr>
-                                        <th>Borrower</th>
-                                        <th>Book Title</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Fadli</td>
-                                        <td>dilan 1991</td>
+
+                                        <td>{{ $counter++ }}</td>
+                                        <td>{{ $borrowings->user->name }}</td>
+                                        {{-- <td> {{ $borrowings->book->title }}</td> --}}
+                                        <td> <img width="20%" style="padding:0% !important"
+                                            src="{{ Storage::url('public/picture/') . $borrowings->book->picture }}"> </td>
+                                        <td>{{ $borrowings->borrowing_date }}</td>
+                                        <td>{{ $borrowings->return_date }}</td>
+                                        <td>{{ $borrowings->book_count }}</td>
+                                        <td>{{ $borrowings->status }}</td>
                                         <td>
-                                            <a href="/borrowing/detail/admin" class="btn icon btn"
-                                                style="background-color: rgb(160, 100, 118)"><i
-                                                    class="bi bi-eye-fill"></i></a>
-                                            @can('admin')
-                                                <a href="/borrowing/edit/admin" class="btn icon btn-light"
-                                                    style="background-color: rgb(255, 255, 227)"><i
-                                                        class="bi bi-pencil-square"></i></a>
-                                                <a href="#" class="btn icon btn-light"><i
-                                                        class="bi bi-trash-fill"></i></a>
-                                            @endcan
+                                            @if ($borrowings->status == "borrowed")
+                                            <div class="d-inline-block mb-2 me-1">
+                                                <div data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                                    <a href="{{ route('adminBorrowing.edit', $borrowings->borrowing_id) }}"
+                                                        class="btn icon btn" style="background-color: rgb(220, 187, 197)"><i
+                                                            class="bi bi-pencil-square"></i></a>
+                                                </div>
+                                            </div>
+                                            @endif
+                                            <div class="d-inline-block mb-2 me-1">
+                                            <form action="{{ route('adminBorrowing.destroy', $borrowings->borrowing_id) }}" method="POST" onsubmit="return confirm('yakin ingin menghapus data?')">
+                                                <div data-bs-toggle="tooltip" data-bs-placement="top" title="delete">
+                                                @csrf
+                                                @method('DELETE')
+                                               <button type="submit" class="btn icon btn" style="background-color: rgb(220, 187, 197); margin-left:4%"><i class="bi bi-trash-fill"></i></button>
+                                                </div>
+                                            </form>
+                                            </div>
                                         </td>
                                     </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+            </div>
 
-            </section>
-        </div>
+        </section>
     </div>
 @endsection
