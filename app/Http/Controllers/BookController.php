@@ -99,7 +99,7 @@ class BookController extends Controller
         $books = Book::where('book_id', $id)->first();
 
 
-        $review = Review::where('user_id',auth()->user()->user_id)->where('book_id', $id)->limit(1)->get();
+        $review = Review::where('book_id', $id)->limit(3)->get();
 
         return view('admin.books.adminBook-detail', compact('books', 'review'),[
             'title'=> 'Dashboard LibyLine',
@@ -168,6 +168,14 @@ class BookController extends Controller
     {
         $this->authorize('admin');
         $books = Book::findOrFail($id);
+
+        // Hapus bookmark terkait buku yang akan dihapus
+    Bookmark::where('book_id', $id)->delete();
+
+    // Hapus gambar dari penyimpanan
+    File::delete(public_path('public/picture') . '/' . $books->picture);
+
+
 
         $books->delete();
 

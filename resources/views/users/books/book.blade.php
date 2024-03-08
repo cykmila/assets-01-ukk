@@ -2,12 +2,12 @@
 @section('content')
     <section>
         <div class="row">
-            <div class="d-flex justify-content-end mb-2">
+            {{-- <div class="d-flex justify-content-end mb-2">
                 <div data-bs-toggle="tooltip" data-bs-placement="top" title="Add book">
                     <a href="/adminBook/create" class="btn icon icon-left btn" style="background-color: rgb(220, 187, 197)"><i
                             class="bi bi-book-fill"></i> Add</a>
                 </div>
-            </div>
+            </div> --}}
             @foreach ($book as $books)
                 <div class="col-xl-4 col-md-6 col-sm-12">
                     <div class="card">
@@ -16,7 +16,7 @@
                                 <img class="img-fluid w-100" src="{{ Storage::url('public/picture/') . $books->picture }}"
                                     alt="Card image cap">
                                 <h4 class="card-title mt-3">{{ $books->title }}</h4>
-                                <p class="card-text" style="font-size: 75%">{{ $books->synopsis }}</p>
+                                <p class="card-text" style="font-size: 75%">{!! strip_tags(Str::limit($books->synopsis, 100)) !!}</p>
                                 <h6 class="card-title mt-3">Remaining stock: {{ $books->stock }}</h6>
                             </div>
 

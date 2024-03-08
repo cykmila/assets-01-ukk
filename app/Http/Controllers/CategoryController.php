@@ -35,7 +35,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $this->authorize('user');
+        $this->authorize('admin');
         return view('admin.categories.adminCategory-create', [
             'title'=> 'Dashboard LibyLine',
             'active'=> 'category',
@@ -47,7 +47,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('user');
+        $this->authorize('admin');
     $request->validate([
         'category' => 'required'
     ]);
@@ -100,7 +100,7 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $this->authorize('user');
+        $this->authorize('admin');
         $categories = Category::findorFail($id);
 
         $categories->delete();

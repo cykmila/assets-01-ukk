@@ -17670,7 +17670,6 @@ fieldset:disabled .btn {
 body .bi:before,
 [class^="bi-"]:before,
 [class*=" bi-"]:before {
-    color: #5a1e2f;
     vertical-align: sub;
 }
 @font-face {

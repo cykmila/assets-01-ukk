@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand navbar-light navbar-top">
         <div class="container-fluid">
-            <a href="#" class="burger-btn d-block">
+            <a href="#" class="burger-btn d-block" style="color: rgb(122, 8, 50)">
                 <i class="bi bi-justify fs-3"></i>
             </a>
 

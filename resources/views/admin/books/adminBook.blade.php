@@ -16,7 +16,7 @@
                                 <img class="img-fluid" src="{{ Storage::url('public/picture/') . $books->picture }}"
                                     alt="Card image cap">
                                 <h4 class="card-title mt-3">{{ $books->title }}</h4>
-                                <p class="card-text" style="font-size: 75%">{{ $books->synopsis }}</p>
+                                <p class="card-text" style="font-size: 75%">{!! strip_tags(Str::limit($books->synopsis, 100)) !!}</p>
                                 <h6 class="card-title mt-3">Remaining stock: {{ $books->stock }}</h6>
                             </div>
                         </div>

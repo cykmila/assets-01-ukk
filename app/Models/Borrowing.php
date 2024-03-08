@@ -12,7 +12,7 @@ class Borrowing extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $primaryKey = 'borrowing_id';
-    // protected $foreignKey = 'book_id';
+    protected $foreignKey = 'book_id';
     protected $table = 'borrowings';
     protected $fillable = [
         'user_id',
